@@ -1,0 +1,412 @@
+@use "global" as *;
+$pc_width: 1440;
+body {
+  overflow-x: hidden;
+}
+.main {
+  position: relative;
+  aspect-ratio: 1440 / 982;
+  &__inner {
+    padding-left: vw($pc_width, 170);
+  }
+  &__logo {
+    width: rem(223);
+    margin-top: rem(50);
+  }
+  &__text {
+    //font-size: clamp(18px,rem(22), 22px);
+    font-size: clamp(16px,vw($pc_width, 22), 45px);
+    font-weight: $regular;
+    line-height: 2.18;
+    padding-top: rem(133);
+    position: relative;
+    z-index: 2;
+  }
+  &__image {
+    position: absolute;
+    top: 0;
+    right: rem(-387);
+    right: 0;
+    width: vw($pc_width, 843);
+    &::before {
+      content: "";
+      background-image: url("/img/lp/brand/main_bg.png");
+      background-size: 100%;
+      background-repeat: no-repeat;
+      width: 120%;
+      display: block;
+      position: absolute;
+      right: 0;
+      aspect-ratio: 1070 / 894;
+    }
+  }
+}
+
+.line__text {
+  overflow: hidden;
+  &__inner {
+    //font-size: rem(81);
+    font-size: vw($pc_width, 81);
+    display: flex;
+    white-space: nowrap;
+    width: max-content; // 中身の幅に合わせる
+    will-change: transform;
+    animation: line-marquee 88s linear infinite;
+    span {
+      display: inline-block;
+      padding-right: rem(30); // 文字間の余白（好きに調整）
+      font-family: $second-font-family;
+      font-weight: $medium; //500
+      font-style: italic;
+      letter-spacing: 0.04em;
+    }
+  }
+}
+@keyframes line-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.about {
+  margin-top: rem(120);
+  .about__01 {
+    position: relative;
+    padding: rem(242) 0 rem(341);
+    &::before {
+      content: "";
+      background-image: url("/img/lp/brand/about-01-bg.png");
+      background-size: 100%;
+      z-index: -1;
+      aspect-ratio: 1673.98 / 905.3174;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: rem(1673.98);
+
+    }
+    &__wrap {
+      display: flex;
+      gap: rem(65);
+      place-content: center;
+    }
+    &__title {
+      p {
+        font-size: clamp(30px,rem(39), 39px);
+        font-weight: $bold;
+        line-height: 1.89;
+      }
+    }
+    &__text {
+      p {
+        font-size: clamp(16px,rem(20), 20px);
+        line-height: 2.2;
+      }
+    }
+  }
+
+  .about__02 {
+    position: relative;
+    padding: rem(0) rem(40) rem(90);
+    max-width: calc(rem(1180) + rem(80));
+    margin: 0 auto;
+    &__wrap {
+      display: flex;
+    }
+    &::before {
+      content: "";
+      background-image: url("/img/lp/brand/about-02-bg.png");
+      background-size: 100%;
+      z-index: -1;
+      aspect-ratio: 1131 / 1109;
+      position: absolute;
+      left: rem(-750);
+      top: rem(-400);
+      transform: translate(-0%, -0%);
+      width: rem(1131);
+    }
+    &__title {
+      p {
+        font-size: clamp(28px,rem(34), 34px);
+        font-weight: $bold;
+        line-height: 1.76;
+        white-space: nowrap;
+      }
+    }
+    &__text {
+      @media screen and (max-width: 1200px) {
+        position: relative;
+        right: rem(40);
+      }
+      &__item {
+        display: flex;
+        align-items: center;
+        gap: rem(30);
+        &__image {
+          width: rem(222);
+          @media screen and (max-width: 1200px) {
+            width: rem(150);
+          }
+        }
+        &:nth-child(1) {
+          position: relative;
+          margin-left: rem(111);
+          .about__02__text__item__contents {
+          }
+        }
+        &:nth-child(2) {
+          .about__02__text__item__contents {
+            position: relative;
+            top: rem(20);
+          }
+        }
+        &:nth-child(3) {
+          position: relative;
+          margin-left: rem(-111);
+          .about__02__text__item__contents {
+            position: relative;
+            top: rem(30);
+          }
+        }
+        &__contents {
+          width: rem(452);
+          max-width: calc(100% - rem(222) - rem(30));
+          @media screen and (max-width: 1200px) {
+            max-width: calc(100% - rem(150) - rem(30));
+          }
+          .title {
+            font-size: clamp(24px,rem(30), 30px);
+            span {
+              display: block;
+              font-family: $second-font-family;
+              font-size: clamp(38px,rem(42), 42px);
+            }
+            &+div {
+              font-size: clamp(14px,rem(18), 18px);
+              margin-top: rem(10);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.project__02 {
+  position: relative;
+  padding-bottom: rem(55);
+  &::before {
+    content: "";
+    background-image: url("/img/lp/brand/project02.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: calc(100% + rem(180) + rem(110));
+    position: absolute;
+    left: rem(-5);
+    top: rem(-180);
+    z-index: -1;
+  }
+  h2 {
+    text-align: center;
+    font-size: clamp(30px,rem(36), 36px);
+    font-weight: $regular;
+    margin-bottom: rem(40);
+    span {
+      display: block;
+      font-size: clamp(24px,rem(30), 30px);
+    }
+  }
+  &__inner {
+    width: calc(rem(1212) + rem(80));
+    max-width: 100%;
+    padding: 0 rem(40);
+    margin: 0 auto;
+  }
+  &__wrap {
+    display: grid;
+    grid-template-columns: calc(50% - rem(22.5)) calc(50% - rem(22.5));
+    gap: rem(45);
+    width: 100%;
+  }
+  &__item {
+    border-radius: rem(20);
+    overflow: hidden;
+    width: 100%;
+    //aspect-ratio: 1 / 1;
+    position: relative;
+    background: $white;
+    &__image {
+      img {
+        width: 100%;
+      }
+    }
+    &__text {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      background: rgba($white, 0.9);
+      padding: rem(20) rem(25) rem(30);
+      width: 100%;
+      //min-height: rem(180);
+      min-height: 37.9%;
+      //aspect-ratio: 473 / 165;
+      small {
+        font-size: clamp(14px,rem(18), 18px);
+        display: block;
+        margin-bottom: rem(5);
+      }
+      p {
+        font-size: clamp(24px,rem(30), 30px);
+        font-family: $second-font-family;
+        gap: rem(15);
+        display: flex;
+        margin-bottom: rem(5);
+        img {
+          width: rem(20);
+        }
+      }
+      span {
+        font-size: clamp(14px,rem(18), 18px);
+        display: block;
+        line-height: 1.7;
+      }
+    }
+  }
+}
+
+
+.project__03 {
+  position: relative;
+  padding-top: rem(60);
+  padding-bottom: rem(170);
+  &::before {
+    content: "";
+    background-image: url("/img/lp/brand/project03.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    //height: calc(100% + rem(0));
+    //min-height: rem(805);
+    //aspect-ratio: 2880 / 1728;
+    position: absolute;
+    left: rem(0);
+    top: rem(0);
+    z-index: -1;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: clamp(30px,rem(36), 36px);
+    font-weight: $regular;
+    margin-bottom: rem(35);
+    span {
+      display: block;
+      font-size: clamp(24px,rem(30), 30px);
+    }
+    &+p {
+      font-size: clamp(14px,rem(18), 18px);
+      text-align: center;
+      margin-bottom: rem(35);
+    }
+  }
+  &__inner {
+    width: calc(rem(1212) + rem(80));
+    max-width: 100%;
+    padding: 0 rem(40);
+    margin: 0 auto;
+  }
+  &__wrap {
+    display: grid;
+    grid-template-columns: calc(33.333% - rem(26.6)) calc(33.333% - rem(26.6)) calc(33.333% - rem(26.6));
+    gap: rem(40);
+    width: 100%;
+  }
+  &__item {
+    background: $white;
+    border-radius: rem(20);
+    overflow: hidden;
+    width: 100%;
+    &__image {
+      aspect-ratio: 608 / 406;
+    }
+    small {
+      font-size: clamp(14px,rem(18), 18px);
+      display: block;
+      margin-bottom: rem(5);
+      color: #898989;
+    }
+    p {
+      font-size: clamp(16px,rem(21), 21px);
+      gap: rem(15);
+      display: flex;
+      margin-bottom: rem(5);
+      img {
+        width: rem(20);
+      }
+    }
+    span {
+      font-size: clamp(14px,rem(18), 18px);
+      display: block;
+      line-height: 1.7;
+    }
+    &__text {
+      padding: rem(20) rem(25);
+    }
+  }
+}
+
+
+.recruit {
+  padding: rem(80) 0 rem(100);
+  &__inner {
+    display: flex;
+    padding: 0 rem(40);
+  }
+  &__box {
+    background-image: url("/img/lp/brand/recruit.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    display: flex;
+    gap: rem(50);
+    aspect-ratio: 1200 / 360;
+    width: rem(1200);
+    padding: 0 rem(160) 0 rem(40);
+    max-width: 100%;
+    margin: 0 auto;
+    align-items: center;
+    place-content: end;
+  }
+
+  &__title {
+    letter-spacing: 0.04em;
+    h2 {
+      font-weight: $regular;
+      line-height: 1;
+      .en {
+        font-size: clamp(45px,rem(60), 60px);
+        display: block;
+        margin-bottom: rem(30);
+      }
+      small {
+        font-size: clamp(20px,rem(27), 27px);
+      }
+    }
+  }
+  &__contents {
+    font-size: clamp(16px,rem(20), 20px);
+    line-height: 2;
+
+    p {
+      margin-bottom: rem(20);
+      padding-left: rem(20);
+    }
+  }
+
+}

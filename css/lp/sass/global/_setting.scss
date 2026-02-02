@@ -1,0 +1,117 @@
+@use "sass:math";
+
+// コンテンツのインナー幅（最も共通の幅が多い部分）
+$inner: 1100px;
+
+// 余白
+//$padding-pc: 20px;
+$padding-pc: 20px;
+$padding-sp: 15px;
+
+
+////////////////////
+// フォント設定
+////////////////////
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,600;1,400;1,600&family=Noto+Sans+JP:wght@400;600&display=swap');
+
+
+$base-font-family:  "Noto Sans JP", "sans-serif";
+
+$second-font-family: "Jost", "sans-serif";
+// ※検証ツールでしっかり反映されているか確認する
+
+// フォントウェイト
+$regular: 300;
+$normal: 400;
+$medium: 500;
+//$semibold: 600;
+$bold: 700;
+
+////////////////////
+// 色の指定
+////////////////////
+
+$black: #1B303E;
+$white: #fff;
+$color01: #e5e4cb;
+$color02: #C1E2F5;
+$color03: #64BBF0;
+$color04: #00649E;
+
+
+////////////////////
+// メディアクエリとブレークポイントの設定
+////////////////////
+
+//ブレイクポイント
+//$breakpoints: (
+//  sm: 520,
+//  md: 767,
+//  lg: 1024,
+//  xl: 1440,
+//);
+
+$breakpoints: (
+  sm: 521,
+  md: 767,
+  lg: 1025,
+  xl: 1441,
+);
+
+
+//メディアクエリー
+$mediaquerys: (
+  sm: "screen and (max-width: #{map-get($breakpoints,'sm')}px)",
+  md: "screen and (max-width: #{map-get($breakpoints,'md')}px)",
+  lg: "screen and (max-width: #{map-get($breakpoints,'lg')}px)",
+  xl: "screen and (max-width: #{map-get($breakpoints,'xl')}px)",
+);
+
+// @include mq(){}で書くとブレークポイントが反映される（初期値はmd）
+//@mixin mq($mediaquery: md) {
+@mixin sm($mediaquery: sm) {
+  @media #{map-get($mediaquerys, $mediaquery)} {
+    @content;
+  }
+}
+@mixin mq($mediaquery: md) {
+  @media #{map-get($mediaquerys, $mediaquery)} {
+    @content;
+  }
+}
+@mixin lg($mediaquery: lg) {
+  @media #{map-get($mediaquerys, $mediaquery)} {
+    @content;
+  }
+}
+
+
+// remへの計算式（16pxを基準としている。10pxを基準とする場合は16を10に変更する）
+@function rem($pixels) {
+  @return math.div($pixels, 16) * 1rem;
+}
+
+
+html body .sp {
+  display: none;
+  @include mq(){
+    display: block ;
+  }
+}
+
+//モバイルのみ表示
+html body .pc{
+  display: block;
+  @include mq{
+    display: none;
+  }
+}
+
+body {
+  color: $black;
+  font-family: $base-font-family;
+  //font-family: 'Noto Sans JP', sans-serif;
+}
+h1,h2,h3,h4 {
+  font-weight: 500;
+}

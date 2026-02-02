@@ -1,0 +1,54 @@
+@use "global" as *;
+body {
+  background: rgba($color01, 0.5);
+  font-family: $base-font-family;
+}
+.en {
+  font-family: $second-font-family;
+}
+.l-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  opacity: 0;
+  &__logo {
+    img {
+      width: rem(223);
+      line-height: 1;
+    }
+  }
+  &__inner {
+    padding: rem(45) rem(30);
+    }
+}
+
+.btn {
+  background: $white;
+  padding: 0 rem(25);
+  height: rem(61);
+  display: grid;
+  align-items: center;
+  place-content: center;
+  border-radius: 9999px;
+  width: fit-content;
+  span {
+    display: flex;
+    gap: rem(15);
+    align-items: center;
+    img {
+      width: rem(20);
+    }
+  }
+}
+
+.l-footer {
+  padding: rem(20) 0 rem(30);
+  &__inner {
+    p {
+      text-align: center;
+      font-size: clamp(14px,rem(18), 18px);
+      letter-spacing: 0.04em;
+    }
+  }
+}
