@@ -343,6 +343,13 @@ body {
   gap: 4.0625rem;
   place-content: center;
 }
+@media screen and (max-width: 767px) {
+  .about .about__01__wrap {
+    display: -ms-grid;
+    display: grid;
+    gap: 2.5rem;
+  }
+}
 .about .about__01__title p {
   font-size: clamp(30px, 2.4375rem, 39px);
   font-weight: 700;
@@ -362,6 +369,12 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+@media screen and (max-width: 767px) {
+  .about .about__02__wrap {
+    display: -ms-grid;
+    display: grid;
+  }
 }
 .about .about__02::before {
   content: "";
@@ -388,6 +401,11 @@ body {
     right: 2.5rem;
   }
 }
+@media screen and (max-width: 1200px) and (max-width: 767px) {
+  .about .about__02__text {
+    right: 0;
+  }
+}
 .about .about__02__text__item {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -409,6 +427,11 @@ body {
   position: relative;
   margin-left: 6.9375rem;
 }
+@media screen and (max-width: 767px) {
+  .about .about__02__text__item:nth-child(1) {
+    margin-left: 0;
+  }
+}
 .about .about__02__text__item:nth-child(2) .about__02__text__item__contents {
   position: relative;
   top: 1.25rem;
@@ -416,6 +439,11 @@ body {
 .about .about__02__text__item:nth-child(3) {
   position: relative;
   margin-left: -6.9375rem;
+}
+@media screen and (max-width: 767px) {
+  .about .about__02__text__item:nth-child(3) {
+    margin-left: 0;
+  }
 }
 .about .about__02__text__item:nth-child(3) .about__02__text__item__contents {
   position: relative;
@@ -482,6 +510,13 @@ body {
   grid-template-columns: calc(50% - 1.40625rem) calc(50% - 1.40625rem);
   gap: 2.8125rem;
   width: 100%;
+}
+@media screen and (max-width: 767px) {
+  .project__02__wrap {
+    -ms-grid-columns: 100%;
+    grid-template-columns: 100%;
+    gap: 1.5625rem;
+  }
 }
 .project__02__item {
   border-radius: 1.25rem;
@@ -571,11 +606,25 @@ body {
   gap: 2.5rem;
   width: 100%;
 }
+@media screen and (max-width: 767px) {
+  .project__03__wrap {
+    -ms-grid-columns: 100%;
+    grid-template-columns: 100%;
+    gap: 1.875rem;
+  }
+}
 .project__03__item {
   background: #fff;
   border-radius: 1.25rem;
   overflow: hidden;
   width: 100%;
+}
+@media screen and (max-width: 767px) {
+  .project__03__item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
 }
 .project__03__item__image {
   aspect-ratio: 608/406;
@@ -632,6 +681,16 @@ body {
       -ms-flex-align: center;
           align-items: center;
   place-content: end;
+}
+@media screen and (max-width: 767px) {
+  .recruit__box {
+    display: -ms-grid;
+    display: grid;
+    width: 40.3125rem;
+    max-width: 100%;
+    aspect-ratio: 1/1;
+    place-content: center;
+  }
 }
 .recruit__title {
   letter-spacing: 0.04em;

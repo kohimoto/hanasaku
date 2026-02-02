@@ -93,6 +93,10 @@ body {
       display: flex;
       gap: rem(65);
       place-content: center;
+      @include mq {
+        display: grid;
+        gap: rem(40);
+      }
     }
     &__title {
       p {
@@ -116,6 +120,9 @@ body {
     margin: 0 auto;
     &__wrap {
       display: flex;
+      @include mq {
+        display: grid;
+      }
     }
     &::before {
       content: "";
@@ -141,6 +148,9 @@ body {
       @media screen and (max-width: 1200px) {
         position: relative;
         right: rem(40);
+        @include mq {
+          right: 0;
+        }
       }
       &__item {
         display: flex;
@@ -155,7 +165,8 @@ body {
         &:nth-child(1) {
           position: relative;
           margin-left: rem(111);
-          .about__02__text__item__contents {
+          @include mq {
+            margin-left: 0;
           }
         }
         &:nth-child(2) {
@@ -167,6 +178,9 @@ body {
         &:nth-child(3) {
           position: relative;
           margin-left: rem(-111);
+          @include mq {
+            margin-left: 0;
+          }
           .about__02__text__item__contents {
             position: relative;
             top: rem(30);
@@ -233,6 +247,10 @@ body {
     grid-template-columns: calc(50% - rem(22.5)) calc(50% - rem(22.5));
     gap: rem(45);
     width: 100%;
+    @include mq {
+      grid-template-columns: 100%;
+      gap: rem(25);
+    }
   }
   &__item {
     border-radius: rem(20);
@@ -327,12 +345,19 @@ body {
     grid-template-columns: calc(33.333% - rem(26.6)) calc(33.333% - rem(26.6)) calc(33.333% - rem(26.6));
     gap: rem(40);
     width: 100%;
+    @include mq {
+      grid-template-columns: 100%;
+      gap: rem(30);
+    }
   }
   &__item {
     background: $white;
     border-radius: rem(20);
     overflow: hidden;
     width: 100%;
+    @include mq {
+      display: flex;
+    }
     &__image {
       aspect-ratio: 608 / 406;
     }
@@ -368,6 +393,7 @@ body {
   &__inner {
     display: flex;
     padding: 0 rem(40);
+
   }
   &__box {
     background-image: url("/img/lp/brand/recruit.png");
@@ -382,6 +408,13 @@ body {
     margin: 0 auto;
     align-items: center;
     place-content: end;
+    @include mq {
+      display: grid;
+      width: rem(645);
+      max-width: 100%;
+      aspect-ratio: 1 / 1;
+      place-content: center;
+    }
   }
 
   &__title {
