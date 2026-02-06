@@ -1,7 +1,17 @@
 @use "global" as *;
+$pc_width: 1440;
 body {
   background: rgba($color01, 0.5);
   font-family: $base-font-family;
+}
+a {
+  opacity: 1;
+  transition: all 0.3s;
+  @media screen and (min-width: 767px) {
+    &:hover {
+      opacity: 0.8;
+    }
+  }
 }
 .en {
   font-family: $second-font-family;
@@ -12,15 +22,38 @@ body {
   left: 0;
   visibility: hidden;
   opacity: 0;
+  z-index: 10;
+  width: 100%;
+  transform: translateY(-12px);
+  pointer-events: none;
+  transition: opacity .2s ease, transform .25s ease, visibility .2s ease;
+  @include mq {
+    background: $white;
+    height: min(vw(750, 100), 70px);
+    display: flex;
+    align-items: center;
+  }
   &__logo {
     img {
       width: rem(223);
       line-height: 1;
+      @include mq {
+        width: min(vw(750, 280), 180px);
+      }
     }
   }
   &__inner {
     padding: rem(45) rem(30);
+    @include mq {
+      padding: 0 vw(750, 40);
     }
+  }
+  &.is-show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
 }
 
 .btn {
@@ -32,6 +65,8 @@ body {
   place-content: center;
   border-radius: 9999px;
   width: fit-content;
+  opacity: 1;
+  transition: all 0.3s;
   span {
     display: flex;
     gap: rem(15);
@@ -40,15 +75,124 @@ body {
       width: rem(20);
     }
   }
+  @media screen and (min-width: 767px) {
+    &:hover {
+      opacity: 0.8;
+    }
+  }
 }
 
 .l-footer {
   padding: rem(20) 0 rem(30);
+  @include mq {
+    padding: vw(750, 20) 0 vw(750, 40);
+  }
   &__inner {
     p {
       text-align: center;
       font-size: clamp(14px,rem(18), 18px);
       letter-spacing: 0.04em;
+      @include mq {
+        font-size: vw(750, 24);
+      }
+    }
+  }
+}
+
+// =========================================
+// アニメーション
+// =========================================
+.js__fadein {
+  opacity: 0;
+  position: relative;
+  transform: translateY(rem(30));
+}
+.js__fadein2 {
+  opacity: 0;
+  position: relative;
+  transform: translateY(rem(30));
+}
+.js__fadein__bg{
+  --bgBeforeOpacity: 0;
+}
+
+.js__fadein__bg::before{
+  content:"";
+  /* 既存の背景画像指定はそのまま */
+  opacity: var(--bgBeforeOpacity);
+  /* もし重ねてるなら */
+  /* position: absolute; inset: 0; */
+}
+
+.loading {
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  z-index: 100;
+  background: #f7f6ef;
+  position: fixed;
+  left: 0;
+  top: 0;
+
+  &__inner {
+    display: flex;
+    place-content: center;
+    align-items: center;
+    height: 100%;
+    position: relative;
+    &::before {
+      content: "";
+      background-image: url("/img/lp/brand/loading.webp");
+      background-size: 100%;
+      width: min(vw(1440, 500), 500px);
+      aspect-ratio: 1003 / 674;
+      transform: scale(1);
+      transform-origin: center;
+      transition: transform 3500ms cubic-bezier(.16, 1, .3, 1); // ←気持ちいい緩急
+      will-change: transform;
+      opacity: 0;
+    }
+    p {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      color: $black;
+      font-size: clamp(30px,vw(1440, 49), 49px);
+      letter-spacing: 0.28em;
+      opacity: 0;
+      transform: translate(-50%, -50%) translateY(15px);
+      transition:
+      opacity 1s cubic-bezier(.16, 1, .3, 1),
+      transform 1s cubic-bezier(.16, 1, .3, 1);
+      white-space: nowrap;
+      @include mq {
+        font-size: min(vw(750, 61), 40px);
+        padding-left:vw(750, 20);
+      }
+    }
+  }
+  &.is-disp {
+    .loading__inner {
+      &::before {
+        opacity: 1;
+      }
+    }
+  }
+  &.is-active {
+    .loading__inner {
+      &::before {
+
+        transform: scale(7);
+        @include mq {
+          transform: scale(12);
+        }
+      }
+      p {
+        opacity: 1; /* 表示させたいなら 1 に */
+        transform: translate(-50%, -50%) translateY(0px);
+        transition-delay: 2000ms;
+
+      }
     }
   }
 }

@@ -31,7 +31,7 @@ $bold: 700;
 // 色の指定
 ////////////////////
 
-$black: #1B303E;
+$black: #000000;
 $white: #fff;
 $color01: #e5e4cb;
 $color02: #C1E2F5;
@@ -79,6 +79,12 @@ $mediaquerys: (
     @content;
   }
 }
+@mixin xl($mediaquery: xl) {
+  @media #{map-get($mediaquerys, $mediaquery)} {
+    @content;
+  }
+}
+
 @mixin lg($mediaquery: lg) {
   @media #{map-get($mediaquerys, $mediaquery)} {
     @content;
@@ -114,4 +120,17 @@ body {
 }
 h1,h2,h3,h4 {
   font-weight: 500;
+}
+
+.disp-pc {
+  display: block;
+  @include mq {
+    display: none;
+  }
+}
+.disp-sp {
+  display: none;
+  @include mq {
+    display: block;
+  }
 }

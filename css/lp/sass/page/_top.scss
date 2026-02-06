@@ -5,32 +5,87 @@ body {
 }
 .main {
   position: relative;
-  aspect-ratio: 1440 / 982;
+  aspect-ratio: 1440 / 942;
+
+  @include xl {
+    aspect-ratio: 1440 / 982;
+  }
+  @include lg {
+    aspect-ratio: 1440 / 1000;
+  }
+  @media screen and (max-width: 850px) {
+    aspect-ratio: 1440 / 1050;
+  }
+  &__wrapper {
+    overflow-x: hidden;
+  }
   &__inner {
-    padding-left: vw($pc_width, 170);
+    padding-left: vw($pc_width, 200);
+    @include mq {
+      padding-left: 0;
+    }
   }
   &__logo {
     width: rem(223);
     margin-top: rem(50);
+    @include mq {
+      margin: vw(750, 90) 0 0;
+      margin-left: vw(750, 170);
+      width: vw(750, 286);
+    }
+    @include sm {
+      margin-left: vw(750, 130);
+    }
   }
   &__text {
-    //font-size: clamp(18px,rem(22), 22px);
     font-size: clamp(16px,vw($pc_width, 22), 45px);
     font-weight: $regular;
     line-height: 2.18;
-    padding-top: rem(133);
+    padding-top: vw($pc_width, 110);
     position: relative;
     z-index: 2;
+    opacity: 0;
+    transition: all 1s;
+    filter: blur(5px);
+    &.is-active {
+      opacity: 1;
+      transition-delay: 500ms;
+      filter: blur(0px);
+    }
+    @include mq {
+      padding-top: vw(750, 100);
+      font-size: min(vw(750, 30), 24px);
+    }
+    p {
+      @include mq {
+        padding-left: vw(750, 170);
+      }
+      @include sm {
+        padding-left: vw(750, 130);
+      }
+    }
   }
   &__image {
     position: absolute;
     top: 0;
-    right: rem(-387);
     right: 0;
     width: vw($pc_width, 843);
+    opacity: 0;
+    transition: all 1s;
+    &.is-active {
+      opacity: 1;
+      transition-delay: 500ms;
+    }
+    @include lg {
+      width: vw($pc_width, 750);
+    }
+    @include mq {
+      width: 100%;
+      position: relative;
+    }
     &::before {
       content: "";
-      background-image: url("/img/lp/brand/main_bg.png");
+      background-image: url("/img/lp/brand/main_bg.webp");
       background-size: 100%;
       background-repeat: no-repeat;
       width: 120%;
@@ -38,12 +93,32 @@ body {
       position: absolute;
       right: 0;
       aspect-ratio: 1070 / 894;
+      @include mq {
+        background-image: url("/img/lp/brand/main_bg-sp.webp");
+        aspect-ratio: 750 / 579;
+        width: 100%;
+      }
+    }
+    &__slider {
+      @include mq {
+        width: 83.333vw;
+        margin: 0 0 0 auto;
+      }
     }
   }
 }
 
 .line__text {
   overflow: hidden;
+  opacity: 0;
+  transition: all 1s;
+  filter: blur(5px);
+  opacity: 0;
+  &.is-active {
+    opacity: 1;
+    transition-delay: 800ms;
+    filter: blur(0px);
+  }
   &__inner {
     //font-size: rem(81);
     font-size: vw($pc_width, 81);
@@ -52,6 +127,10 @@ body {
     width: max-content; // 中身の幅に合わせる
     will-change: transform;
     animation: line-marquee 88s linear infinite;
+    @include mq {
+      font-size: vw(750, 81);
+      padding-top: vw(750, 120)
+    }
     span {
       display: inline-block;
       padding-right: rem(30); // 文字間の余白（好きに調整）
@@ -72,13 +151,20 @@ body {
 }
 
 .about {
-  margin-top: rem(120);
+  margin-top: rem(110);
+  overflow: hidden;
+  @include mq {
+    margin-top: vw(750, 100);
+  }
   .about__01 {
     position: relative;
-    padding: rem(242) 0 rem(341);
+    padding: rem(262) 0 rem(341);
+    @include mq {
+      padding: vw(750, 80) 0 vw(750, 300);
+    }
     &::before {
       content: "";
-      background-image: url("/img/lp/brand/about-01-bg.png");
+      background-image: url("/img/lp/brand/about-01-bg.webp");
       background-size: 100%;
       z-index: -1;
       aspect-ratio: 1673.98 / 905.3174;
@@ -87,7 +173,13 @@ body {
       top: 50%;
       transform: translate(-50%, -50%);
       width: rem(1673.98);
-
+      @include mq {
+        background-image: url("/img/lp/brand/about-01-bg-sp.webp");
+        background-size: 100% 100%;
+        width: 100%;
+        height: 100%;
+        aspect-ratio: auto;
+      }
     }
     &__wrap {
       display: flex;
@@ -95,20 +187,31 @@ body {
       place-content: center;
       @include mq {
         display: grid;
-        gap: rem(40);
+        gap: vw(750, 30);
+        place-content: baseline;
+        padding-left: vw(750, 170);
+      }
+      @include sm {
+        padding-left: vw(750, 130);
       }
     }
     &__title {
-      p {
-        font-size: clamp(30px,rem(39), 39px);
+      h1 {
+        font-size: clamp(26px,rem(39), 39px);
         font-weight: $bold;
         line-height: 1.89;
+        @include mq {
+          font-size: min(vw(750, 38), 30px);
+        }
       }
     }
     &__text {
       p {
         font-size: clamp(16px,rem(20), 20px);
         line-height: 2.2;
+        @include mq {
+          font-size: min(vw(750, 30), 22px);
+        }
       }
     }
   }
@@ -118,30 +221,53 @@ body {
     padding: rem(0) rem(40) rem(90);
     max-width: calc(rem(1180) + rem(80));
     margin: 0 auto;
+    left: rem(80);
+    @media screen and (max-width: 1300px) {
+      left: 0;
+    }
+    @include mq {
+      padding: rem(0) vw(750, 20) vw(750, 40);
+      margin-bottom: vw(750, 48);
+    }
     &__wrap {
       display: flex;
       @include mq {
-        display: grid;
+        display: block;
+
       }
     }
     &::before {
       content: "";
-      background-image: url("/img/lp/brand/about-02-bg.png");
+      background-image: url("/img/lp/brand/about-02-bg.webp");
       background-size: 100%;
       z-index: -1;
       aspect-ratio: 1131 / 1109;
       position: absolute;
       left: rem(-750);
-      top: rem(-400);
+      top: rem(-380);
       transform: translate(-0%, -0%);
       width: rem(1131);
+      @include mq {
+        background-image: url("/img/lp/brand/about-02-bg-sp.webp");
+        aspect-ratio: 692 / 679;
+        width: vw(750, 692);
+        left: -25vw;
+        top: -35vw;
+      }
     }
     &__title {
-      p {
-        font-size: clamp(28px,rem(34), 34px);
+      h1 {
+        font-size: clamp(24px,rem(34), 34px);
         font-weight: $bold;
         line-height: 1.76;
         white-space: nowrap;
+        @include mq {
+          font-size: min(vw(750, 38), 30px);
+          padding-left: vw(750, 150);
+        }
+        @include sm {
+          padding-left: vw(750, 110);
+        }
       }
     }
     &__text {
@@ -150,16 +276,23 @@ body {
         right: rem(40);
         @include mq {
           right: 0;
+          padding-top: vw(750, 160);
         }
       }
       &__item {
         display: flex;
         align-items: center;
         gap: rem(30);
+        @include mq {
+          margin-bottom: vw(750, 20);
+        }
         &__image {
           width: rem(222);
           @media screen and (max-width: 1200px) {
             width: rem(150);
+          }
+          @include mq {
+            width: vw(750, 245);
           }
         }
         &:nth-child(1) {
@@ -192,16 +325,28 @@ body {
           @media screen and (max-width: 1200px) {
             max-width: calc(100% - rem(150) - rem(30));
           }
+          @include mq {
+            max-width: calc(100% - vw(750, 245) - rem(30));
+          }
           .title {
-            font-size: clamp(24px,rem(30), 30px);
+            font-size: clamp(20px,rem(30), 30px);
+            @include mq {
+              font-size: min(vw(750, 33), 24px);
+            }
             span {
               display: block;
               font-family: $second-font-family;
-              font-size: clamp(38px,rem(42), 42px);
+              font-size: clamp(30px,rem(42), 42px);
+              @include mq {
+                font-size: min(vw(750, 48), 26px);
+              }
             }
             &+div {
               font-size: clamp(14px,rem(18), 18px);
               margin-top: rem(10);
+              @include mq {
+                font-size: min(vw(750, 28), 18px);
+              }
             }
           }
         }
@@ -214,33 +359,59 @@ body {
 .project__02 {
   position: relative;
   padding-bottom: rem(55);
+  margin-top: vw($pc_width, -30);
+  @include mq {
+    padding-bottom: vw(750, 50);
+    margin-top: (0);
+  }
+  @media screen and (min-width: 1800px) {
+    margin-top: vw($pc_width, -60);
+  }
   &::before {
     content: "";
-    background-image: url("/img/lp/brand/project02.png");
-    background-size: 100%;
+    background-image: url("/img/lp/brand/project02.webp");
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     width: 100%;
-    height: calc(100% + rem(180) + rem(110));
+    height: calc(100% + vw($pc_width, 180) + vw($pc_width, 110));
     position: absolute;
     left: rem(-5);
-    top: rem(-180);
+    top: vw($pc_width, -180);
     z-index: -1;
+    @include mq {
+      background-image: url("/img/lp/brand/project02-sp.webp");
+      background-size: 100% 100%;
+      height: 130%;
+      top: -20vw;
+      left: 0;
+      right: 0;
+    }
   }
-  h2 {
+  h1.l-title {
     text-align: center;
-    font-size: clamp(30px,rem(36), 36px);
+    font-size: clamp(26px,rem(36), 36px);
     font-weight: $regular;
     margin-bottom: rem(40);
+    @include mq {
+      font-size: min(vw(750, 38), 26px);
+      margin-bottom: vw(750, 50);
+    }
     span {
       display: block;
       font-size: clamp(24px,rem(30), 30px);
+      @include mq {
+        font-size: min(vw(750, 30), 22px);
+      }
     }
   }
   &__inner {
-    width: calc(rem(1212) + rem(80));
+    width: calc(rem(1008) + rem(80));
     max-width: 100%;
     padding: 0 rem(40);
     margin: 0 auto;
+    @include mq {
+      padding: vw(750, 40) vw(750, 50) 0;
+    }
   }
   &__wrap {
     display: grid;
@@ -256,12 +427,12 @@ body {
     border-radius: rem(20);
     overflow: hidden;
     width: 100%;
-    //aspect-ratio: 1 / 1;
     position: relative;
     background: $white;
     &__image {
       img {
         width: 100%;
+        transition: all 0.5s;
       }
     }
     &__text {
@@ -271,28 +442,50 @@ body {
       background: rgba($white, 0.9);
       padding: rem(20) rem(25) rem(30);
       width: 100%;
-      //min-height: rem(180);
       min-height: 37.9%;
-      //aspect-ratio: 473 / 165;
+      @include mq {
+        min-height: auto;
+        padding: vw(750, 20) vw(750, 45) vw(750, 40);
+      }
       small {
         font-size: clamp(14px,rem(18), 18px);
         display: block;
         margin-bottom: rem(5);
+        @include mq {
+          font-size: min(vw(750, 25), 18px);
+        }
       }
-      p {
+      h2 {
         font-size: clamp(24px,rem(30), 30px);
         font-family: $second-font-family;
         gap: rem(15);
         display: flex;
         margin-bottom: rem(5);
+        @include mq {
+          font-size: min(vw(750, 40), 25px);
+          gap: rem(9);
+        }
         img {
           width: rem(20);
+          @include mq {
+            width: vw(750, 25);
+          }
         }
       }
       span {
         font-size: clamp(14px,rem(18), 18px);
         display: block;
         line-height: 1.7;
+        @include mq {
+          font-size: min(vw(750, 25), 18px);
+        }
+      }
+    }
+    &:hover {
+      @media screen and (min-width: 767px) {
+        .project__02__item__image img {
+          transform: scale(1.05);
+        }
       }
     }
   }
@@ -303,42 +496,59 @@ body {
   position: relative;
   padding-top: rem(60);
   padding-bottom: rem(170);
+  @include mq {
+    padding-top: vw(750, 70);
+    padding-bottom: vw(750, 140);
+  }
   &::before {
     content: "";
-    background-image: url("/img/lp/brand/project03.png");
+    background-image: url("/img/lp/brand/project03.webp");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     width: 100%;
     height: 100%;
-    //height: calc(100% + rem(0));
-    //min-height: rem(805);
-    //aspect-ratio: 2880 / 1728;
     position: absolute;
     left: rem(0);
     top: rem(0);
     z-index: -1;
+    @include mq {
+      background-image: url("/img/lp/brand/project03-sp.webp");
+    }
   }
 
-  h2 {
+  h1.l-title {
     text-align: center;
-    font-size: clamp(30px,rem(36), 36px);
+    font-size: clamp(26px,rem(36), 36px);
     font-weight: $regular;
     margin-bottom: rem(35);
+    @include mq {
+      font-size: min(vw(750, 38), 26px);
+      margin-bottom: vw(750, 30);
+    }
     span {
       display: block;
       font-size: clamp(24px,rem(30), 30px);
+      @include mq {
+        font-size: min(vw(750, 30), 22px);
+      }
     }
     &+p {
       font-size: clamp(14px,rem(18), 18px);
       text-align: center;
       margin-bottom: rem(35);
+      @include mq {
+        font-size: min(vw(750, 25), 20px);
+      }
     }
   }
   &__inner {
-    width: calc(rem(1212) + rem(80));
+    width: calc(rem(1008) + rem(80));
     max-width: 100%;
     padding: 0 rem(40);
     margin: 0 auto;
+    @include mq {
+      padding: 0 vw(750, 50);
+    }
   }
   &__wrap {
     display: grid;
@@ -360,29 +570,66 @@ body {
     }
     &__image {
       aspect-ratio: 608 / 406;
+      overflow: hidden;
+      img {
+        transition: all 0.5s;
+      }
+      @include mq {
+        width: 46.5%;
+        height: 100%;
+        img {
+          object-fit: cover;
+          height: 100%;
+          object-position: top left;
+        }
+      }
     }
     small {
       font-size: clamp(14px,rem(18), 18px);
       display: block;
       margin-bottom: rem(5);
       color: #898989;
+      @include mq {
+        font-size: min(vw(750, 25), 18px);
+      }
     }
-    p {
+    h2 {
       font-size: clamp(16px,rem(21), 21px);
       gap: rem(15);
       display: flex;
       margin-bottom: rem(5);
+      @include mq {
+        font-size: min(vw(750, 27), 22px);
+        gap: rem(5);
+      }
       img {
         width: rem(20);
+        @include mq {
+          width: vw(750, 21);
+        }
       }
     }
     span {
       font-size: clamp(14px,rem(18), 18px);
       display: block;
       line-height: 1.7;
+      @include mq {
+        font-size: min(vw(750, 25), 18px);
+      }
     }
     &__text {
       padding: rem(20) rem(25);
+      @include mq {
+        width: calc(100% -  46.5%);
+        padding: vw(750, 30) vw(750, 20);
+      }
+    }
+    &:hover {
+      @media screen and (min-width: 767px) {
+        .project__03__item__image img {
+          transform: scale(1.05);
+        }
+      }
     }
   }
 }
@@ -390,13 +637,19 @@ body {
 
 .recruit {
   padding: rem(80) 0 rem(100);
+  @include mq {
+    padding: vw(750, 70) 0 vw(750, 80);
+  }
   &__inner {
     display: flex;
     padding: 0 rem(40);
+    @include mq {
+      padding: 0 vw(750, 50);
+    }
 
   }
   &__box {
-    background-image: url("/img/lp/brand/recruit.png");
+    background-image: url("/img/lp/brand/recruit.webp");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     display: flex;
@@ -407,38 +660,84 @@ body {
     max-width: 100%;
     margin: 0 auto;
     align-items: center;
-    place-content: end;
+    place-content: center end;
+    @media screen and (max-width: 1100px) {
+      padding: 0 rem(120) 0 rem(40);
+    }
+    @include lg {
+      padding: 0 rem(80) 0 rem(40);
+    }
     @include mq {
+      background-image: url("/img/lp/brand/recruit-sp.webp");
       display: grid;
-      width: rem(645);
+      grid-template-columns: 100%;
+      width: 100%;
       max-width: 100%;
       aspect-ratio: 1 / 1;
-      place-content: center;
+      place-content: flex-start;
+      padding-top: vw(750, 120);
+      padding-right: vw(750, 55);
+      padding-left: vw(750, 55);
+      gap: vw(750, 50);
+    }
+    @media screen and (max-width: 620px) {
+      padding-top: vw(750, 80);
+    }
+    &__inner {
+      display: flex;
+      gap: rem(50);
+      @include mq {
+        display: grid;
+        gap: vw(750, 50);
+      }
     }
   }
 
   &__title {
     letter-spacing: 0.04em;
-    h2 {
+    @include mq {
+      padding-left: vw(750, 20);
+    }
+    h1 {
       font-weight: $regular;
       line-height: 1;
       .en {
         font-size: clamp(45px,rem(60), 60px);
         display: block;
         margin-bottom: rem(30);
+        @include mq {
+          font-size: min(vw(750, 60), 45px);
+          margin-bottom: vw(750, 7);
+        }
       }
       small {
         font-size: clamp(20px,rem(27), 27px);
+        @include mq {
+          font-size: min(vw(750, 34), 20px);
+        }
       }
     }
   }
   &__contents {
     font-size: clamp(16px,rem(20), 20px);
     line-height: 2;
-
+    @include mq {
+      font-size: min(vw(750, 28), 20px);
+    }
     p {
       margin-bottom: rem(20);
       padding-left: rem(20);
+      @include mq {
+        margin-bottom: vw(750, 60);
+        padding-left: vw(750, 20);
+      }
+    }
+    .btn {
+      @include mq {
+        width: 100%;
+        font-size: min(vw(750, 31), 22px);
+        height: min(vw(750, 90), 80px);
+      }
     }
   }
 
