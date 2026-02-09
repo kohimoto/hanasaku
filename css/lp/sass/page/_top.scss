@@ -196,7 +196,7 @@ body {
       }
     }
     &__title {
-      h1 {
+      h2 {
         font-size: clamp(26px,rem(39), 39px);
         font-weight: $bold;
         line-height: 1.89;
@@ -256,7 +256,7 @@ body {
       }
     }
     &__title {
-      h1 {
+      h2 {
         font-size: clamp(24px,rem(34), 34px);
         font-weight: $bold;
         line-height: 1.76;
@@ -387,7 +387,7 @@ body {
       right: 0;
     }
   }
-  h1.l-title {
+  h2.l-title {
     text-align: center;
     font-size: clamp(26px,rem(36), 36px);
     font-weight: $regular;
@@ -455,7 +455,7 @@ body {
           font-size: min(vw(750, 25), 18px);
         }
       }
-      h2 {
+      h3 {
         font-size: clamp(24px,rem(30), 30px);
         font-family: $second-font-family;
         gap: rem(15);
@@ -516,7 +516,7 @@ body {
     }
   }
 
-  h1.l-title {
+  h2.l-title {
     text-align: center;
     font-size: clamp(26px,rem(36), 36px);
     font-weight: $regular;
@@ -593,7 +593,7 @@ body {
         font-size: min(vw(750, 25), 18px);
       }
     }
-    h2 {
+    h3 {
       font-size: clamp(16px,rem(21), 21px);
       gap: rem(15);
       display: flex;
@@ -698,7 +698,7 @@ body {
     @include mq {
       padding-left: vw(750, 20);
     }
-    h1 {
+    h2 {
       font-weight: $regular;
       line-height: 1;
       .en {

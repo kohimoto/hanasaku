@@ -682,13 +682,13 @@ body {
     padding-left: 17.3333333333vw;
   }
 }
-.about .about__01__title h1 {
+.about .about__01__title h2 {
   font-size: clamp(26px, 2.4375rem, 39px);
   font-weight: 700;
   line-height: 1.89;
 }
 @media screen and (max-width: 767px) {
-  .about .about__01__title h1 {
+  .about .about__01__title h2 {
     font-size: min(5.0666666667vw, 30px);
   }
 }
@@ -751,20 +751,20 @@ body {
     top: -35vw;
   }
 }
-.about .about__02__title h1 {
+.about .about__02__title h2 {
   font-size: clamp(24px, 2.125rem, 34px);
   font-weight: 700;
   line-height: 1.76;
   white-space: nowrap;
 }
 @media screen and (max-width: 767px) {
-  .about .about__02__title h1 {
+  .about .about__02__title h2 {
     font-size: min(5.0666666667vw, 30px);
     padding-left: 20vw;
   }
 }
 @media screen and (max-width: 521px) {
-  .about .about__02__title h1 {
+  .about .about__02__title h2 {
     padding-left: 14.6666666667vw;
   }
 }
@@ -913,24 +913,24 @@ body {
     right: 0;
   }
 }
-.project__02 h1.l-title {
+.project__02 h2.l-title {
   text-align: center;
   font-size: clamp(26px, 2.25rem, 36px);
   font-weight: 300;
   margin-bottom: 2.5rem;
 }
 @media screen and (max-width: 767px) {
-  .project__02 h1.l-title {
+  .project__02 h2.l-title {
     font-size: min(5.0666666667vw, 26px);
     margin-bottom: 6.6666666667vw;
   }
 }
-.project__02 h1.l-title span {
+.project__02 h2.l-title span {
   display: block;
   font-size: clamp(24px, 1.875rem, 30px);
 }
 @media screen and (max-width: 767px) {
-  .project__02 h1.l-title span {
+  .project__02 h2.l-title span {
     font-size: min(4vw, 22px);
   }
 }
@@ -997,7 +997,7 @@ body {
     font-size: min(3.3333333333vw, 18px);
   }
 }
-.project__02__item__text h2 {
+.project__02__item__text h3 {
   font-size: clamp(24px, 1.875rem, 30px);
   font-family: "Jost", "sans-serif";
   gap: 0.9375rem;
@@ -1007,16 +1007,16 @@ body {
   margin-bottom: 0.3125rem;
 }
 @media screen and (max-width: 767px) {
-  .project__02__item__text h2 {
+  .project__02__item__text h3 {
     font-size: min(5.3333333333vw, 25px);
     gap: 0.5625rem;
   }
 }
-.project__02__item__text h2 img {
+.project__02__item__text h3 img {
   width: 1.25rem;
 }
 @media screen and (max-width: 767px) {
-  .project__02__item__text h2 img {
+  .project__02__item__text h3 img {
     width: 3.3333333333vw;
   }
 }
@@ -1065,34 +1065,34 @@ body {
     background-image: url("/img/lp/brand/project03-sp.webp");
   }
 }
-.project__03 h1.l-title {
+.project__03 h2.l-title {
   text-align: center;
   font-size: clamp(26px, 2.25rem, 36px);
   font-weight: 300;
   margin-bottom: 2.1875rem;
 }
 @media screen and (max-width: 767px) {
-  .project__03 h1.l-title {
+  .project__03 h2.l-title {
     font-size: min(5.0666666667vw, 26px);
     margin-bottom: 4vw;
   }
 }
-.project__03 h1.l-title span {
+.project__03 h2.l-title span {
   display: block;
   font-size: clamp(24px, 1.875rem, 30px);
 }
 @media screen and (max-width: 767px) {
-  .project__03 h1.l-title span {
+  .project__03 h2.l-title span {
     font-size: min(4vw, 22px);
   }
 }
-.project__03 h1.l-title + p {
+.project__03 h2.l-title + p {
   font-size: clamp(14px, 1.125rem, 18px);
   text-align: center;
   margin-bottom: 2.1875rem;
 }
 @media screen and (max-width: 767px) {
-  .project__03 h1.l-title + p {
+  .project__03 h2.l-title + p {
     font-size: min(3.3333333333vw, 20px);
   }
 }
@@ -1167,7 +1167,7 @@ body {
     font-size: min(3.3333333333vw, 18px);
   }
 }
-.project__03__item h2 {
+.project__03__item h3 {
   font-size: clamp(16px, 1.3125rem, 21px);
   gap: 0.9375rem;
   display: -webkit-box;
@@ -1176,16 +1176,16 @@ body {
   margin-bottom: 0.3125rem;
 }
 @media screen and (max-width: 767px) {
-  .project__03__item h2 {
+  .project__03__item h3 {
     font-size: min(3.6vw, 22px);
     gap: 0.3125rem;
   }
 }
-.project__03__item h2 img {
+.project__03__item h3 img {
   width: 1.25rem;
 }
 @media screen and (max-width: 767px) {
-  .project__03__item h2 img {
+  .project__03__item h3 img {
     width: 2.8vw;
   }
 }
@@ -1305,26 +1305,26 @@ body {
     padding-left: 2.6666666667vw;
   }
 }
-.recruit__title h1 {
+.recruit__title h2 {
   font-weight: 300;
   line-height: 1;
 }
-.recruit__title h1 .en {
+.recruit__title h2 .en {
   font-size: clamp(45px, 3.75rem, 60px);
   display: block;
   margin-bottom: 1.875rem;
 }
 @media screen and (max-width: 767px) {
-  .recruit__title h1 .en {
+  .recruit__title h2 .en {
     font-size: min(8vw, 45px);
     margin-bottom: 0.9333333333vw;
   }
 }
-.recruit__title h1 small {
+.recruit__title h2 small {
   font-size: clamp(20px, 1.6875rem, 27px);
 }
 @media screen and (max-width: 767px) {
-  .recruit__title h1 small {
+  .recruit__title h2 small {
     font-size: min(4.5333333333vw, 20px);
   }
 }
